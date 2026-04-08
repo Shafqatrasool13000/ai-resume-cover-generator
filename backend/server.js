@@ -30,12 +30,13 @@ app.get('/api/protected', authMiddleware, (req, res) => {
   });
 });
 
-// Database connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('MongoDB connected');
-    app.listen(process.env.PORT || 5000, () => {
-      console.log(`Server running on port ${process.env.PORT || 5000}`);
-    });
-  })
+  .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log('DB connection error:', err));
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(process.env.PORT || 5000, () => {
+    console.log(`Server running on port ${process.env.PORT || 5000}`);
+  });
+}
