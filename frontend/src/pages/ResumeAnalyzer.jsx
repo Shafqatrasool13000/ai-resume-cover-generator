@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import API_URL from '../config'
 
 export default function ResumeAnalyzer() {
   const [form, setForm] = useState({
@@ -25,7 +26,7 @@ export default function ResumeAnalyzer() {
     try {
       const token = localStorage.getItem('token')
       const res = await axios.post(
-        'http://localhost:5000/api/ai/analyze-resume',
+        `${API_URL}/api/ai/analyze-resume`,
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       )

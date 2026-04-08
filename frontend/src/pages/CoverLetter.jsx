@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import API_URL from '../config'
 
 export default function CoverLetter() {
   const [form, setForm] = useState({
@@ -27,7 +28,7 @@ export default function CoverLetter() {
     try {
       const token = localStorage.getItem('token')
       const res = await axios.post(
-        'http://localhost:5000/api/ai/cover-letter',
+        `${API_URL}/api/ai/cover-letter`,
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       )
