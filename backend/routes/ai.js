@@ -39,10 +39,14 @@ Instructions:
 - Include why they are a great fit
 - Do not use generic phrases
 - Format it as a proper cover letter
+- Do NOT use placeholder brackets like [Your Name] or [Company Name]
+- Use "I" for the candidate and "your company" for the employer
+- Do not include a formal address header
+- Start directly with "Dear Hiring Manager,"
 `;
 
         const completion = await groq.chat.completions.create({
-           model: 'llama-3.3-70b-versatile',
+            model: 'llama-3.3-70b-versatile',
             messages: [{ role: 'user', content: prompt }],
             max_tokens: 800,
             temperature: 0.7
@@ -96,7 +100,7 @@ Return only the JSON, nothing else.
 `;
 
         const completion = await groq.chat.completions.create({
-           model: 'llama-3.3-70b-versatile',
+            model: 'llama-3.3-70b-versatile',
             messages: [{ role: 'user', content: prompt }],
             max_tokens: 800,
             temperature: 0.7
